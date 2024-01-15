@@ -16,7 +16,7 @@ function ColorSchemesExample() {
             <Nav.Link href="#About">About</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link >🛒Cart<Cart/></Nav.Link>
+            <Nav.Link ><Cart/></Nav.Link>
           </Nav>
         </Container>
       </Navbar>
