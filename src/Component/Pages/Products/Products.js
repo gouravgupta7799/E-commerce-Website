@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 //import Card from '../UI/Card/Card';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { CartContext } from '../ContextStore/Cart-Context';
+import { CartContext } from '../../ContextStore/Cart-Context';
 
 const Products = [
   {
@@ -36,7 +36,7 @@ const AvailableProducts = () => {
   function addCartHendler(item) {
     CartCtx.addToCart({ ...item, quantity: 1 })
   }
-  
+
   const availableProducts = Products.map((product) => (
     <Col key={product.id} sm={4}>
       <Card className='shadow-lg'>
