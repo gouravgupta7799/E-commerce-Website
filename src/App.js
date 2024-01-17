@@ -1,6 +1,7 @@
 
 import './App.css';
 import About from './Component/Pages/About/About'
+import ContactUS from './Component/Pages/ContactUS/ContactUS';
 import Home from './Component/Pages/Home/Home'
 import Products from './Component/Pages/Products/Products'
 import RootLayout from './Component/Pages/Root';
@@ -23,7 +24,9 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [{ path: '/home', element: <Home /> },
     { path: '/store', element: <Products /> },
-    { path: '/about', element: <About /> },]
+    { path: '/about', element: <About /> },
+    { path: '/contact', element: <ContactUS /> },
+    ]
   },
 ])
 
