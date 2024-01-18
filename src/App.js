@@ -7,7 +7,7 @@ import Products from './Component/Pages/Products/Products'
 import RootLayout from './Component/Pages/Root';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // import { Route, createRoutesFromElements } from 'react-router-dom';
-
+import SingleProduct from './Component/Pages/Products/SingleProduct'
 // const routeDefinitions = createRoutesFromElements(
 //   <Route>
 //     <Route path='/' element={<Home />} />
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
     { path: '/store', element: <Products /> },
     { path: '/about', element: <About /> },
     { path: '/contact', element: <ContactUS /> },
+      { path: '/singleproduct/:prodId', element: <SingleProduct /> },
     ]
   },
 ])
