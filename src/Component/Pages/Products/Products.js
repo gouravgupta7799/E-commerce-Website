@@ -40,13 +40,14 @@ const AvailableProducts = () => {
 
   const availableProducts = Products.map((product) => (
     <Col key={product.id} sm={4}>
-      <Card as={Link} to={`/singleproduct/${product.id}`} className='shadow-lg'>
+      <Card className='shadow-lg'>
         <Card.Body style={{ width: 'fit-content' }}>
           <img src={product.imageUrl} alt={product.title} />
           <h3>{product.title}</h3>
           <p>${product.price}</p>
           <Button varient='success' onClick={() => { addCartHendler(product) }}>Add to Cart</Button>
         </Card.Body>
+        <Button as={Link} to={`/singleproduct/${product.id}`}>show product</Button>
       </Card>
     </Col>
 
