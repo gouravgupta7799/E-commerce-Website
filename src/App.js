@@ -4,37 +4,40 @@ import About from './Component/Pages/About/About'
 import ContactUS from './Component/Pages/ContactUS/ContactUS';
 import Home from './Component/Pages/Home/Home'
 import Products from './Component/Pages/Products/Products'
-import RootLayout from './Component/Pages/Root';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-// import { Route, createRoutesFromElements } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SingleProduct from './Component/Pages/Products/SingleProduct'
-// const routeDefinitions = createRoutesFromElements(
-//   <Route>
-//     <Route path='/' element={<Home />} />
-//     <Route path='/home' element={<Home />} />
-//     <Route path='/store' element={<Products />} />
-//     <Route path='/About' element={<About />} />
-//   </Route>
-// )
-// const router = createBrowserRouter(routeDefinitions)
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <RootLayout />,
-    children: [{ path: '/home', element: <Home /> },
-    { path: '/store', element: <Products /> },
-    { path: '/about', element: <About /> },
-    { path: '/contact', element: <ContactUS /> },
-      { path: '/singleproduct/:prodId', element: <SingleProduct /> },
-    ]
-  },
-])
+import Header from './Component/Layout/Header';
+import Footer from './Component/Layout/Footer';
+import CartProvider from './Component/ContextStore/CartProvider';
+import Headline from './Component/Layout/Headline';
+import { useContext } from 'react';
+import AuthContext from './Component/ContextStore/Auth-Context';
+import Login from './Component/LoginForm/Login'
 
 function App() {
+
+  const AuthCtx = useContext(AuthContext);
+  const Auth = AuthCtx.isLoggedIn
+  console.log(Auth)
   return (
     <div className="App">
-      <RouterProvider router={router} />
+
+      <BrowserRouter>
+        <CartProvider>
+          <Header />
+          <Headline />
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='/home' element={<Home />} />
+            <Route path='/store' element={Auth && <Products />} />
+            <Route path='/About' element={<About />} />
+            <Route path='/singleproduct/:prodId' element={Auth && <SingleProduct />} />
+            <Route path='/contact' element={<ContactUS />} />
+          </Routes>
+          <Footer />
+        </CartProvider>
+      </BrowserRouter>
+
     </div >
   );
 }
