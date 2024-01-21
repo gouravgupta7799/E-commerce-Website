@@ -29,10 +29,11 @@ function App() {
           <Routes>
             <Route path='/' element={<Login />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/store' element={Auth && <Products />} />
+            <Route path='/store' element={!Auth ? <Login /> : <Products />} />
             <Route path='/About' element={<About />} />
             <Route path='/singleproduct/:prodId' element={Auth && <SingleProduct />} />
             <Route path='/contact' element={<ContactUS />} />
+            <Route path='*' element={<Login />} />
           </Routes>
           <Footer />
         </CartProvider>
