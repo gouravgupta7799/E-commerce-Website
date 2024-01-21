@@ -16,7 +16,7 @@ export default function AuthProvider(props) {
     localStorage.setItem('token', token)
     timeOut = setTimeout(() => {
       localStorage.removeItem('token')
-      console.log('setTimeout')
+      localStorage.removeItem('email')
     }, (500000))
 
   }
@@ -25,6 +25,7 @@ export default function AuthProvider(props) {
   const logoutHandler = () => {
     setToken(null)
     localStorage.removeItem('token')
+    localStorage.removeItem('email')
     clearTimeout(timeOut)
   }
 

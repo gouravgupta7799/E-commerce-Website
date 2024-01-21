@@ -18,7 +18,7 @@ function App() {
 
   const AuthCtx = useContext(AuthContext);
   const Auth = AuthCtx.isLoggedIn
-  console.log(Auth)
+  
   return (
     <div className="App">
 

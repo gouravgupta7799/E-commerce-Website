@@ -27,7 +27,6 @@ function ContectUS(props) {
             'content-type': 'application/Json'
           }
         })
-      console.log(info)
     }
     catch (err) {
       console.log(err.message)

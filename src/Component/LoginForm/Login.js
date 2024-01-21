@@ -2,6 +2,7 @@ import { useState, useRef, useContext } from 'react';
 import AuthContext from '../ContextStore/Auth-Context';
 import classes from './Login.module.css';
 import { useNavigate } from 'react-router-dom'
+import { CartContext } from '../ContextStore/Cart-Context';
 
 const AuthForm = () => {
   const history = useNavigate()
@@ -10,6 +11,7 @@ const AuthForm = () => {
   const authctx = useContext(AuthContext)
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false)
+  const cartCtx = useContext(CartContext);
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -21,9 +23,9 @@ const AuthForm = () => {
     setIsLoading(true)
     let url;
     if (isLogin) {
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAuNWVxs-q-csV5Y0J6L9racb1KePgkOVc'
     } else {
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAuNWVxs-q-csV5Y0J6L9racb1KePgkOVc'
     }
     fetch(url,
       {
@@ -53,6 +55,7 @@ const AuthForm = () => {
         })
       }
     }).then((data) => {
+      cartCtx.addEmail(enteredEmail)
       authctx.logIn(data.idToken);
       history('/home');
     })
